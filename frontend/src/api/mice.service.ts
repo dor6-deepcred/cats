@@ -1,3 +1,4 @@
+// COMMENT: you can remove this file
 import axios from "axios"
 
 const miceApi = axios.create({
@@ -5,3 +6,4 @@ const miceApi = axios.create({
 })
 
 export const getMice = () => miceApi('');
+

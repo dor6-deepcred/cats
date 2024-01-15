@@ -47,10 +47,12 @@ export class Mouse extends Model {
   })
   updatedAt: Date;
 
+  // COMMENT: you should also add index on this column
   @ForeignKey(() => Cat)
   @Column
   catId: number;
 
+  // COMMENT: adding cascade
   @BelongsTo(() => Cat)
   cat: Cat;
 }

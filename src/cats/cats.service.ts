@@ -37,6 +37,9 @@ export class CatsService {
           [Op.or]: [
             { firstName: { [Op.iLike]: `%${searchText}%` } },
             { lastName: { [Op.iLike]: `%${searchText}%` } },
+            // COMMENT: this is an inefficient way to query on the mice & include the mice, you should include them with seperate
+            //          its ok for small dataset but given a large one what you are doing is better to use a subquery which will return all the cat ids for the matching mice
+            //          (its actualy ok here because mouse has a single cat but if the model become more complicated it may cause degrading performance
             { '$mice.name$': { [Op.iLike]: `%${searchText}%` } },
           ],
         },

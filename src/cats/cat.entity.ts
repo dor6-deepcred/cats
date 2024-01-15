@@ -1,6 +1,8 @@
 import { Table, Column, Model, DataType, HasMany } from 'sequelize-typescript';
 import { Mouse } from '../mice/mouse.entity';
 
+// COMMENT: you should do a base model for the id, created at, deleted at
+
 @Table({
   tableName: 'cats',
   underscored: true,
@@ -16,6 +18,8 @@ import { Mouse } from '../mice/mouse.entity';
   ],
 })
 export class Cat extends Model {
+  // COMMENT: better to use uuid and not id, performance is not what it was in the good old days
+  //          and it saves you the security need to hide the id because numeric id may cause security risks
   @Column({
     type: DataType.INTEGER,
     primaryKey: true,
@@ -56,6 +60,7 @@ export class Cat extends Model {
   updatedAt: Date;
 
   @HasMany(() => {
+    // COMMENT: there must be a better solution
     // Workaround to avoid circular dependency with Mouse.entity
     const { Mouse } = require('../mice/mouse.entity');
     return Mouse;

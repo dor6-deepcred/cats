@@ -5,6 +5,7 @@ import type { ICat } from '../../types/common.types';
 import {getCat} from '../../api/cats.service';
 import useStyles from './CatPage.styles';
 
+// COMMENT: component name should be same as file name (if its the component exported from the folder so also folder name) this is also true for other pages
 const CatsList: React.FC = () => {
     const classes = useStyles();
     const { id } = useParams<string>();

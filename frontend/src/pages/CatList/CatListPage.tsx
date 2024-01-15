@@ -31,8 +31,10 @@ const CatsList: React.FC = () => {
     }, []);
 
     return (
+        // COMMENT: fragment is useless
         <>
         <div className={classes.editorWrapper}>
+            // COMMENT: generally we only use div and we dont usually use label
             <label className={classes.search}>
                 <input
                     type="text"
